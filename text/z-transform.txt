@@ -1,0 +1,35 @@
+
+z-transform of simplest low pass filter
+
+    y[n]  = x[n] + x[n-1]
+  Z{y[n]} = Z{x[n] + x[n-1]}
+     Y[z] = Z{x[n]} + Z{x[n-1]}
+     Y[z] = X[z] + z**-1 * X[z]
+     Y[z] = (1 + z**-1) * X[z]
+Y[z]/X[z] = 1 + z**-1
+     H[z] = 1 + z**-1
+
+
+z-transform of first order comb filter
+
+     y[n] = x[n] + b1 * x[n-1] - a0 * y[n-1]
+  Z{y[n]} = Z{x[n] + b1 * x[n-1] - a0 * y[n-1]}
+  Z{y[n]} = Z{x[n]} + Z{b1 * x[n-1]} - Z{a0 * y[n-1]}
+     Y[z] = X[z] + b1 * Z**-1 * X[z] - a0 * z**-1 * Y[z]
+
+Y[z] + a0 * z**-1 * Y[n] = X[z] + b1 * z**-1 * X[z]
+
+
+Y[z] [1 +  a0 * z**-1] = X[z] [1 + b1 * z**-1]
+
+Y[z] = 1 + b1 * z**-1 
+----   ---------------
+X[z]   1 + a0 * z**-1
+
+
+H[z] = 1 + b1 * z**-1 
+       ---------------
+       1 + a0 * z**-1
+
+This is the correct transfer function, finally.
+
